@@ -1,0 +1,178 @@
+<div style="text-align: center">
+    Name: <input type="text" [(ngModel)]="name">
+    <h3>{{name}}</h3>
+
+    <br>
+    <ul>
+        <li *ngFor="let i of listSem">
+            {{i}}
+        </li>
+    </ul>
+
+    <br>
+    <div *ngFor="let i of details">
+        <div *ngIf="i.age>21">
+            <h2>{{i.name}} - {{i.age}}</h2>
+        </div>
+    </div>
+
+    <br>
+        <h1>Even</h1>
+        <div *ngFor="let a of details, even as i">
+            <div *ngIf="i==false">
+                <h2>{{a.name}} - {{a.age}}</h2>
+            </div>
+        </div>
+
+    <br>
+    <table border="1" align="center">
+        <tr [ngStyle]="{'background': 'yellow'}">
+            <td>Name</td>
+            <td>Age</td>
+        </tr>
+
+        <tbody *ngFor="let data of details, index as i">
+            <tr *ngIf="i%2 == 0;"
+                [ngStyle]="{'background': 'pink'}">
+                <td>{{data.name}}</td>
+                <td>{{data.age}}</td>
+            </tr>
+
+            <tr *ngIf="i%2 == 1;"
+                [ngStyle]="{'background': 'cyan'}">
+                <td>{{data.name}}</td>
+                <td>{{data.age}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <h2>
+        <div *ngFor="let data of details">
+            <div *ngIf="data.name == 'A'"
+            [ngStyle]="{'background': 'pink'}">
+                {{data.name}} - {{data.age}}
+            </div>
+
+            <div *ngIf="data.name == 'B'"
+            [ngStyle]="{'background': 'red'}">
+                {{data.name}} - {{data.age}}
+            </div>
+
+            <div *ngIf="data.name == 'C'"
+            [ngStyle]="{'background': 'cyan'}">
+                {{data.name}} - {{data.age}}
+            </div>
+
+            <div *ngIf="data.name == 'D'"
+            [ngStyle]="{'background': 'green'}">
+                {{data.name}} - {{data.age}}
+            </div>
+
+            <div *ngIf="data.name == 'E'"
+            [ngStyle]="{'background': 'yellow'}">
+                {{data.name}} - {{data.age}}
+            </div>
+        </div>
+    </h2>
+
+    <br>
+    <h2>
+        <div *ngFor="let data of details">
+            <div [ngSwitch]="data.name">
+                <div *ngSwitchCase = "'A'"
+                [ngStyle]="{'background': 'red'}">
+                    {{data.name}} - {{data.age}}
+                </div>
+
+                <div *ngSwitchCase = "'B'"
+                [ngStyle]="{'background': 'yellow'}">
+                    {{data.name}} - {{data.age}}
+                </div>
+
+                <div *ngSwitchCase = "'C'"
+                [ngStyle]="{'background': 'green'}">
+                    {{data.name}} - {{data.age}}
+                </div>
+
+                <div *ngSwitchCase = "'D'"
+                [ngStyle]="{'background': 'pink'}">
+                    {{data.name}} - {{data.age}}
+                </div>
+
+                <div *ngSwitchCase = "'E'"
+                [ngStyle]="{'background': 'cyan'}">
+                    {{data.name}} - {{data.age}}
+                </div>
+            <p *ngSwitchDefault>
+            
+            </p>
+            </div>
+        </div>
+    </h2>
+
+    <br>
+    <h1>{{bindingTitle}}</h1>
+    <br>
+        <button (click)="onClick()">Change</button>
+
+    <br>
+    <div [hidden]="course.length>0">
+        <p>No Course</p>
+    </div>
+
+    <div [hidden]="course.length<=0">
+        <p>List of Course</p>
+    </div>
+
+    <br>
+    <button (click)="onClickChange()">Click</button>
+    <br>
+    <div *ngIf="courseStatus; else noCourse">
+        Course Status:{{courseStatus}}
+    </div>
+
+    <ng-template #noCourse>
+        Course Status:{{courseStatus}}
+    </ng-template>
+
+    <br>
+    <div>
+        <p [ngStyle]="{'background': courseStatus ? 'lightpink' : 'yellow'}">
+            Course Status:{{courseStatus}}
+        </p>
+    </div>
+
+    <br>
+    <div [ngClass]="['class1','class2']">
+        <p>NgClass Demo</p>
+    </div>
+
+    <br>
+    Select Country:<select (change)="onCountryClick($event.target.value)">
+        <option>Select</option>
+        <option *ngFor="let c of country" [value]="c.code">{{c.name}}</option>
+    </select>
+
+    <div [ngSwitch]="currentCountry">
+        <div *ngSwitchCase="'ind'">
+            <h2>India Calling Code is +91</h2>
+        </div>
+        <div *ngSwitchCase="'us'">
+            <h2>US Calling Code is +55</h2>
+        </div>
+        <div *ngSwitchCase="'uk'">
+            <h2>UK Calling Code is +333</h2>
+        </div>
+        <div *ngSwitchCase="'aus'">
+            <h2>Australia Calling Code is +65</h2>
+        </div>
+        <div *ngSwitchCase="'jp'">
+            <h2>Japan Calling Code is +76</h2>
+        </div>
+        <div *ngSwitchDefault>
+            <h2>Nothing Selected</h2>
+        </div>
+    </div>
+    
+</div>

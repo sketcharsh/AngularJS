@@ -1,0 +1,39 @@
+<!-- <p>form-parent works!</p> -->
+<!-- <app-form-child></app-form-child> -->
+<br>
+<br>
+<button class="btn btn-primary" (click)="onAnimate()" >animate</button>
+<br>
+<br>
+
+<button class="btn btn-primary" (click)="onShrink()" >Shrink</button>
+<br>
+<br>
+
+<div [@divState]="state" style="height: 100px; width: 100px ">
+
+</div>
+
+<div [@shrunkState]="shrunkstate" style="height: 100px; width: 100px ">
+
+</div>
+
+<input type="text" #textbox />
+<br>
+<br>
+
+<button class="btn btn-primary" (click)="onAdd(textbox.value)">Add to list</button>
+<br>
+<br>
+
+<table align="center">
+    <tr>
+        <td>
+            <ul class="list-group">
+                <li class="list-group-item" [@listState] *ngFor="let item of items" (click)="onDelete(item)">
+                    {{item}}
+                </li>
+            </ul>
+        </td>
+    </tr>
+</table>

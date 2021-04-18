@@ -1,0 +1,18 @@
+<div>
+        <label>Name</label> 
+        <br>
+        <input type="text" name="usr" #inputUser>
+        <br>
+        <label>Password</label>
+        <br>
+        <input type="text" name="pwd" #inputPass>
+        <br><br>
+        <button (click)="loginAction(inputUser.value,inputPass.value)">Login</button>
+        <div *ngIf="isValid==true; else clr2">
+            <br><label [ngStyle]="{'color': 'blue'}">{{message}}</label>
+        </div>
+        <ng-template #clr2>
+            <br><br><label [ngStyle]="{'color': 'red'}">{{message}}</label>
+        </ng-template>
+        
+</div>

@@ -1,0 +1,22 @@
+input[type=text] {
+    width: 15%;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 2px solid rgb(247, 162, 36);
+    border-bottom: 2px solid red;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+
+label{
+   font-size: 20px;
+}
+
+Button {
+    background-color: rgb(238, 149, 108);
+    color: black;
+    border: 2px solid midnightblue;
+    padding: 8px;
+    font-size: 13px;
+    border-radius: 8px;
+  }

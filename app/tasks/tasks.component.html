@@ -1,0 +1,86 @@
+<p>Harsh Parikh IT18A36</p>
+<h3>1. Display name and age where age < 30</h3>
+<div *ngFor = "let d of DisplayData;">
+    <div *ngIf="d.age<30">
+        {{d.name}} {{d.age}} {{d.country}}
+    </div>
+</div>
+<h3>2. Dif Color with Dif Countries (Using if else)</h3>
+<div *ngFor = "let d of DisplayData;">
+        <div *ngIf="d.country == 'INDIA'"
+           [ngStyle] = "{color : 'Blue'}">
+              {{d.country}}
+        </div>
+        <div *ngIf="d.country == 'UK'"
+          [ngStyle] = "{color : 'Red'}">
+                  {{d.country}}
+                
+        </div>
+        <div *ngIf="d.country == 'CANADA'"
+         [ngStyle] = "{color : 'brown'}">
+                  {{d.country}}
+        </div>
+ </div>
+ <h3>3. Dif Color with Dif Countries (Using Switch)</h3>
+ <div *ngFor = "let d of DisplayData;">
+    <div [ngSwitch] = "d.country">
+            <div *ngSwitchCase="'INDIA'" [ngStyle] = "{color : 'blue'}">{{d.country}}</div>
+            <div *ngSwitchCase="'UK'" [ngStyle] = "{color : 'Red'}">{{d.country}}</div>
+            <div *ngSwitchCase="'CANADA'" [ngStyle] = "{color : 'brown'}">{{d.country}}</div>
+            <div *ngSwitchDefault [ngStyle] = "{color : 'black'}">None</div>
+    </div>     
+</div>
+<h3>4. Code ,Name,Gender,Salary,DOB View (using Table)</h3>
+<table border = 1 align="center">
+        <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Salary</th>
+        <th>DOB</th>
+        </tr>
+        <tr *ngFor = "let d of DisplayEmpl index as i;">
+
+            <td>{{d.code}}</td>
+            <td>{{d.name}}</td>
+            <td>{{d.Gender}}</td>
+            <td>{{d.Salary}}</td>
+            <td>{{d.DOB}}</td>
+        </tr>
+</table>
+<h3>5. Odd Even Background</h3>
+<table border = 1 align="center">
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Salary</th>
+            <th>DOB</th>
+        </tr>
+        <tr *ngFor = "let d of DisplayEmpl index as i;" [ngStyle] = "{background : i%2==0 ? 'skyblue' : 'yellow'}">
+            <td>{{d.code}}</td>
+            <td>{{d.name}}</td>
+            <td>{{d.Gender}}</td>
+            <td>{{d.Salary}}</td>
+            <td>{{d.DOB}}</td>
+        </tr>
+</table>
+<h3>6.Display even index table</h3>
+<table border = 1 align="center">
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Salary</th>
+            <th>DOB</th>
+        </tr>
+        <tbody *ngFor = "let d of DisplayEmpl index as i;">
+        <tr *ngIf= "i%2==1">
+            <td>{{d.code}}</td>
+            <td>{{d.name}}</td>
+            <td>{{d.Gender}}</td>
+            <td>{{d.Salary}}</td>
+            <td>{{d.DOB}}</td>
+        </tr>
+    </tbody>
+</table>

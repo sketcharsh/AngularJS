@@ -1,0 +1,28 @@
+#Attribute Directive
+~Create Attribute Directive
+> ng g d <directive-name>
+
+~ [<d>.directive.ts] | Implement onInit() on Directive Class
+
+~ [<d>.directive.ts] | Pass this shit to constructor
+> constructor(private elRef:ElementRef, private renderer:Renderer2) { }
+
+~ [<d>.directive.ts] | Add setStyle() inside the overridden onInit()
+> this.renderer.setStyle(this.elRef.nativeElement, 'color', 'green')
+
+~ [<c>.component.html] | Use the directive in html
+> <label appHighlight > Sample Text </label> 
+
+~ [<d>.directive.ts] | Add @HostListener to listen to events
+> @HostListener('mouseenter') mouseover(eventData:Event) {
+    this.renderer.setStyle(this.elRef.nativeElement, 'color', 'green')
+  }
+
+~ Listening to events with @HostBinding()
+~ [<d>.directive.ts] | Add @HostBinding() to directive class
+> @HostBinding('style.backgroundColor') backgroundColor:string = "grey" 
+
+~ [<d>.directive.ts] | In @HostListener change the properties directly
+> @HostListener('mouseleave') mouseleave(eventData:Event) {
+    this.backgroundColor = "grey"
+  }

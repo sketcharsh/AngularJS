@@ -1,0 +1,55 @@
+#Pipes (Same as linux piping)
+
+~ Use piping with string interpolation to pass a string through filters
+> emp.dateOfBirth | uppercase 
+
+~ Pipes can be chained indefinitely
+> emp.dob | date | uppercase 
+
+~ Advanced Piping
+> emp.salary | currency:'INR':true:'1.3-3'
+
+#Creating custom pipes
+1. Create a separate .ts file to define a class for the custom pipe eg. [Title.Pipe.ts]
+
+2. [Title.Pipe.ts] | Define the class for custom pipe
+> 	import { PipeTransform, Pipe } from '@angular/core';
+	
+	export class TitlePipe implements PipeTransform{
+	    
+	    transform(value: string, gender:string):string {
+	        if (gender.toLocaleLowerCase() == 'male'){
+	            return "Mr. " + value;
+	        }
+	        else if (gender.toLocaleLowerCase() == 'female'){
+	            return "Ms. " + value;
+	        }
+	        
+	        return "Benaam";
+	    }
+	}
+
+3.[Title.Pipe.ts] | Name your pipe so you can use it in the html
+> 	import { PipeTransform, Pipe } from '@angular/core';
+	
+	@Pipe({
+	    name: "TitlePipe"
+	})
+	export class TitlePipe implements PipeTransform{
+	    
+	    transform(value: string, gender:string):string {
+	        if (gender.toLocaleLowerCase() == 'male'){
+	            return "Mr. " + value;
+	        }
+	        else if (gender.toLocaleLowerCase() == 'female'){
+	            return "Ms. " + value;
+	        }
+	        
+	        return "Benaam";
+	    }
+	}
+
+4.[<c>.component.html] | Use the custom pipe in the html file
+> {{emp.name | uppercase | TitlePipe:emp.gender}}
+
+5.Done!

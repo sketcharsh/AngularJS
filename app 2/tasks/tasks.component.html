@@ -1,0 +1,112 @@
+<h1>1. Less 30 Age</h1>
+
+<div *ngFor="let d of data">
+    <div *ngIf="d.age<=30">
+        {{d.name}}-{{d.age}}
+    </div>
+</div>
+
+<h1>2. Diff color in diff contries(using if else)</h1>
+
+<div *ngFor="let c of dataCountry">
+    <div *ngIf="c.country=='India'"
+    [ngStyle]="{'color': 'green'}">
+        {{c.name}}-{{c.country}}
+    </div>
+
+    <div *ngIf="c.country=='UK'"
+    [ngStyle]="{'color': 'blue'}">
+        {{c.name}}-{{c.country}}
+    </div>
+
+    <div *ngIf="c.country=='America'"
+    [ngStyle]="{'color': 'red'}">
+        {{c.name}}-{{c.country}}
+    </div>
+
+    <div *ngIf="c.country=='US'"
+    [ngStyle]="{'color': 'purple'}">
+        {{c.name}}-{{c.country}}
+    </div>
+</div>
+
+<h1>3. Diff color in diff contries(using switch)</h1>
+
+<div *ngFor="let c of dataCountry">
+    <div [ngSwitch]="c.country">
+        <div *ngSwitchCase="'India'"
+        [ngStyle]="{'color': 'blue'}">
+            {{c.name}}-{{c.country}}
+        </div>
+        <div *ngSwitchCase="'UK'"
+        [ngStyle]="{'color': 'green'}">
+            {{c.name}}-{{c.country}}   
+        </div>
+        <div *ngSwitchCase="'US'"
+        [ngStyle]="{'color': 'red'}">
+            {{c.name}}-{{c.country}}  
+        </div>
+        <div *ngSwitchCase="'America'"
+        [ngStyle]="{'color': 'purple'}">
+            {{c.name}}-{{c.country}}    
+        </div>
+    </div>
+</div>
+
+<h1>4. Display data using table</h1>
+
+<table border="1" align="center">
+    <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Country</th>
+    </tr>
+    <tbody *ngFor="let d of dataTable">
+        <tr>
+            <td>{{d.code}}</td>
+            <td>{{d.name}}</td>
+            <td>{{d.age}}</td>
+            <td>{{d.country}}</td>
+        </tr>    
+    </tbody>
+</table>
+
+<h1>5. Diff color(odd/even)</h1>
+
+<table border="1" align="center">
+    <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Country</th>
+    </tr>
+        <tbody *ngFor="let d of dataTable; index as i">
+            <tr [ngStyle]="{'background' : i%2==1 ? 'pink' : 'skyblue'}">
+                <td>{{d.code}}</td>
+                <td>{{d.name}}</td>
+                <td>{{d.age}}</td>
+                <td>{{d.country}}</td>
+            </tr>    
+        </tbody>
+</table>
+
+<h1>6. Display even data using table</h1>
+
+<table border="1" align="center">
+    <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Country</th>
+    </tr>
+
+    <tbody *ngFor="let d of dataTable; index as i">
+        <tr *ngIf="i%2==1">
+            <td>{{d.code}}</td>
+            <td>{{d.name}}</td>
+            <td>{{d.age}}</td>
+            <td>{{d.country}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,129 @@
+# QUESTION - Show odd items or even items on button click, Provide two button for odd and even
+
+---[odd-even.component.html]
+
+<div *ngIf="active == 'odd'; then oddsTemplate; else evensTemplate">
+</div>
+
+<ng-template #oddsTemplate>
+    <div *ngFor="let item of getOdds()" [hidden]="isHidden">
+        <label appHighlight [ngStyle]="{'color': 'blue'}"> {{ item }} <hr></label> 
+    </div>
+</ng-template>
+
+<ng-template #evensTemplate>
+    <div *ngFor="let item of getEvens()" [hidden]="isHidden">
+        <label appHighlight [ngStyle]="{'color': 'green'}"> {{ item }} <hr></label> 
+    </div>
+</ng-template>
+
+<button (click)="changeHidden()">Odd / Even</button>
+
+---[odd-even.component.ts]
+
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-odd-even',
+  templateUrl: './odd-even.component.html',
+  styleUrls: ['./odd-even.component.css']
+})
+export class OddEvenComponent implements OnInit {
+
+  numbers = [1, 4, 53, 76, 23, 65, 23, 67, 98, 97, 12, 13, 78, 87, 34, 43, 53, 79, 17]
+  active : string = "odd"
+  isHidden = true
+  
+  constructor() { }
+  ngOnInit() {
+  }
+
+  changeHidden(){
+    if (this.active == 'odd'){
+      this.active = 'even'
+      this.isHidden = false
+    } else if (this.active == 'even'){
+      this.active = 'odd'
+      this.isHidden = false
+    }
+  }
+  getOdds(){
+    return this.numbers.filter((value, index, arr) => { return value % 2 != 0 })
+  }
+  getEvens(){
+    return this.numbers.filter((value, index, arr) => { return value % 2 == 0 })
+  }
+}
+
+
+#QUESTION - Create a shopping site, when mouse hovers over the product it should change color, it should also change color on click
+
+---[component.html]
+<div>
+    <h2>Apple Products</h2>
+    <h3>All Apple Products, Just Chinese.</h3>
+</div>
+
+<table>
+        <tr>
+            <td appCustomDirective *ngFor="let product of products" align="center" >
+                <img src="{{ product.image }}" height="300" width="250">
+                <br> <label style="font-size: 20px; font-weight: bold">{{ product.name }}</label>
+                <br> <label style="font-size: 18px; font-style: oblique">{{ product.desc }}</label>
+                <br> <label style="font-size: 14px">Price : {{ product.price }}</label>
+                <br> <button> Add To Cart </button>
+            </td>
+        </tr>
+</table>
+
+---[component.ts]
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-shopping',
+  templateUrl: './shopping.component.html',
+  styleUrls: ['./shopping.component.css']
+})
+export class ShoppingComponent implements OnInit {
+  products = [
+    {
+      name : "Chinese Iphone",
+      desc : "Chale to chaand tak, Warna Raat tak.",
+      price : "120 Rs",
+      image : "assets/iphone.jpeg"
+    },
+    {
+      name : "Chinese Ipad",
+      desc : "Same Resolution as Iphone, But bigger screen.",
+      price : "240 Rs",
+      image : "assets/ipad.jpeg"
+    }
+  ]
+
+  constructor() { }
+  ngOnInit() {
+  }
+}
+
+---[directive.ts] (Custom directive)
+import { Directive, HostBinding, HostListener, Input } from '@angular/core';
+
+@Directive({
+  selector: '[appCustomDirective]'
+})
+export class CustomDirectiveDirective {
+
+@HostBinding('style.backgroundColor') bgColor
+
+@HostListener('click') myClick(){
+  this.bgColor = "lightblue"
+}
+@HostListener('mouseenter') mouseenter(eventData:Event) {
+  this.bgColor = "grey"
+
+}
+@HostListener('mouseleave') mouseleave(eventData:Event) {
+  this.bgColor = "white"
+}
+  constructor() { }
+}

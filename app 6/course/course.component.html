@@ -1,0 +1,67 @@
+<div>
+    <h4 [ngStyle]="{'color' : 'red' , 'font-size' : '20px' , 'text-decoration': 'underline'}">Select Course</h4><select (change)="choise($event.target.value)">
+        <option>Select</option>
+        <option *ngFor="let d of courseData" [value]="d.code">{{d.name}}</option>
+    </select>
+
+    <div [ngSwitch]="currentCourse">
+        <div *ngSwitchCase="'mscit'">
+            <h2>Subjects of MSC(IT)</h2>
+            <ul>
+                <li>
+                    iOS
+                </li>
+                <li>
+                    Angular
+                </li>
+            </ul>
+        </div>
+        <div *ngSwitchCase="'mca'">
+            <h2>Subjects of  MCA</h2>
+            <ul>
+                <li>
+                    Android
+                </li>
+                <li>
+                    Advance Java
+                </li>
+            </ul>
+        </div>
+        <div *ngSwitchCase="'bca'">
+            <h2>Subjects of  BCA</h2>
+            <ul>
+                <li>
+                    C++
+                </li>
+                <li>
+                    Python
+                </li>
+            </ul>
+        </div>
+        <div *ngSwitchCase="'bcom'">
+            <h2>Subjects of  BCom</h2>
+            <ul>
+                <li>
+                    Account
+                </li>
+                <li>
+                    Stats
+                </li>
+            </ul>
+        </div>
+        <div *ngSwitchCase="'pgdca'">
+            <h2>Subjects of  PGDCA</h2>
+            <ul>
+                <li>
+                    C Language
+                </li>
+                <li>
+                    Cyber Security
+                </li>
+            </ul>
+        </div>
+        <div *ngSwitchDefault>
+            <h2>Nothing is selected</h2>
+        </div>
+    </div>
+</div>

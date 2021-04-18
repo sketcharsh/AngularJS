@@ -1,0 +1,33 @@
+<h2>Registration Form</h2>
+<br><br>
+<div>
+        <input type="text" placeholder="enter roll" [(ngModel)]="student.roll">
+        <br><br>
+        <input type="text" placeholder="enter name" [(ngModel)]="student.name">
+        <br><br>
+        <input type="text" placeholder="enter phone no" [(ngModel)]="student.phone">
+        <br><br>
+        <input type="text" placeholder="enter mail" [(ngModel)]="student.mail">
+        <br><br>
+        Course:<select [(ngModel)]="student.course">
+            <option *ngFor="let c of course">{{c.name}}</option>
+        </select>
+        <br><br>
+        <input type="radio" name="gender" value="Male" [(ngModel)]="student.gender">Male
+        <input type="radio" name="gender" value="Female" [(ngModel)]="student.gender">Female
+        <br><br><br>
+        <button (click)="showDetails()">Submit</button>
+        <br><br><br>
+</div>
+ 
+        <div [hidden]="detailsHidden">
+            <h2>Student Details</h2>
+            <h3>Rollno : {{ student.roll }}</h3>
+            <h3>Name : {{ student.name }} </h3>
+            <h3>Contact : {{ student.phone }}</h3>
+            <h3>Email : {{ student.mail }}</h3>
+            <h3>Course : {{ student.course }}</h3>
+            <h3>Gender : {{ student.gender }}</h3>
+        </div>
+
+        

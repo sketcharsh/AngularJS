@@ -1,0 +1,71 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <br>
+
+  <demo1></demo1>
+
+  <form #userForm="ngForm">
+    <h4>{{classUser | json}}</h4>
+
+    <h1>Student Form</h1>
+
+    Name: <input type="text" name="name" [(ngModel)]="classUser.name">
+    <br>
+    Age: <input type="text" name="age" [(ngModel)]="classUser.age">
+    <br>
+    Contact: <input type="text" name="phone" [(ngModel)]="classUser.contact">
+    <br>
+    Gender: <input type="text" name="gender" [(ngModel)]="classUser.gender">
+    <br>
+    Course: <select name="course" [(ngModel)]="classUser.course">
+      <option>MCA</option>
+      <option>BCA</option>
+      <option>Msc(IT)</option>
+      <option>PGDCA</option>
+      <option>iMsc(IT)</option>
+    </select>
+    <br>
+    I,agree <input type="checkbox" name="agree" [(ngModel)]="classUser.agree">
+  </form>
+
+  <br>
+  <h1>Custom Property Binding</h1>
+  <chlid1 *ngFor="let i of customData"
+          [demo]="i">
+  </chlid1>
+
+  <br>
+  <h1>Custom Event Binding</h1>
+  <div>
+    <h2>{{showMsg}}</h2>
+  </div>
+
+  <child2 (abc)="onNotifyClicked($event)">
+  </child2>
+
+  <br>
+  <h3 appHighlight>This is demo for hightlight directive</h3>
+
+  <br>
+  <h1>Product</h1>
+  <h1>Apple Product</h1>
+  <br>
+  <div [ngStyle]="{'background': 'lightgray'}">
+    <div appProduct  [clickColor]="'#657689'">
+      <h3>Apple Tv</h3>
+      <img src="assets/image1.jpg">
+      <br>
+      <button>Add to cart</button>
+    </div>
+
+    <div appProduct [clickColor] = "'#657689'">
+      <h3>iPhone 6s</h3>
+      <img src="assets/image2.jpg">
+    </div>
+</div>
+
+</div>
+

@@ -1,0 +1,67 @@
+--> Highlight Directive
+1. First create App
+
+ng g d Highlight
+
+2. Open HighLight.directive.ts
+
+3. export class HighLightDirective implements OnInit
+{
+    constructor(private renderer:Renderer2){ }
+}
+
+4. OnInit method
+
+ngOnInit()
+{
+    this.renderer.setStyle()
+}
+
+5. add ElementRef with style
+
+export class HighLightDirective implements OnInit
+{
+    constructor(private elRef:ElementRef,renderer:Renderer2){ }
+    ngOnInit()
+    {
+    this.renderer.setStyle(this.elRef.nativeElement,'background-color','green')
+    }
+}
+
+5.Run 
+
+<h2 appHighlight>
+  This is Highlighted
+</h2>
+
+--> Add @HostListener
+
+  @HostListener('mouseenter') mouseover(eventData:Event)
+  {
+    this.renderer.setStyle(this.elRef.nativeElement,'background-color','yellow')
+  }
+
+  @HostListener('mouseleave') mouseleave(eventData:Event)
+  {
+    this.renderer.setStyle(this.elRef.nativeElement,'background-color','pink')
+  }
+
+
+-->
+ 
+1. Add @HostBinding
+
+@HostBinding('style.backgroundColor') backgroundColor: string='transparent';
+
+2. add line in @HostListener
+
+@HostListener('mouseenter') mouseover(eventData:Event)
+  {
+    // this.renderer.setStyle(this.elRef.nativeElement,'background-color','yellow')
+    this.backgroundColor = "#15FFF7";
+  }
+  @HostListener('mouseleave') mouseleave(eventData:Event)
+  {
+    // this.renderer.setStyle(this.elRef.nativeElement,'background-color','skyblue')
+    this.backgroundColor = "yellow";
+  }

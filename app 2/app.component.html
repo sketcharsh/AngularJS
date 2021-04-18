@@ -1,0 +1,60 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <exam></exam>
+  <div>
+    <h1>------------------------------------------------------------------------</h1>
+    
+<form #userForm="ngForm">
+  <h4>data from class into fields</h4>
+  {{classUser | json}}
+  <br>
+
+  <h4>data from fields into </h4>
+  {{classUser | json}}
+  <br><br><br>
+
+  <h1>Student Form</h1>
+    Name: <input type="text" name="Name" [(ngModel)]="classUser.name">
+    <br>
+    Mail: <input type="text" name="Mail" [(ngModel)]="classUser.mail">
+    <br>
+    Contact: <input type="text" name="Contact" [(ngModel)]="classUser.contact">
+    <br>
+    Gender:  
+    <input type="radio" name="gender" value="Male" [(ngModel)]="classUser.gender">Male
+    <input type="radio" name="gender" value="Female" [(ngModel)]="classUser.gender">Female
+    <br>
+    Course:
+    <select name="Course" [(ngModel)]="classUser.course">
+      <option>MCA</option>
+      <option>BCOM</option>
+      <option>BCA</option>
+    </select>
+    <br>
+    I,agree<input type="checkbox" name="Agree" [(ngModel)]="classUser.agree">
+</form>
+  </div>
+
+<h1>------------------------------------------------------------------------</h1>
+
+<tasks></tasks>
+
+<h1>------------------------------------------------------------------------</h1>
+<h1>Custom Property Binding</h1>
+<child1 *ngFor="let i of customData"
+        [demo]="i">
+</child1>
+
+<h1>------------------------------------------------------------------------</h1>
+<h1>Custom Event Binding</h1>
+<div>
+  <h2>{{showMsg}}</h2>
+</div>
+<child2 (abc)="onNotifyClicked($event)">
+</child2>
+
+</div>
+

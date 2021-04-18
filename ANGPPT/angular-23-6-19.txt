@@ -1,0 +1,39 @@
+#Attribute Directive (Continued)
+
+~ [<d>.directive.ts] | HostBinding and HostListener for Click event
+> @HostListener('click') myClick(){
+  	this.bgColor = "blue"
+  }
+
+  @HostListener('mouseenter') mouseenter(eventData:Event) {
+  	this.bgColor = "yellow"
+  }
+
+~ [<d>.directive.ts] | HostBinding and HostListener for Strings
+> @HostBinding('attr.title') myTitle
+
+  @HostListener('click') myClick(){
+   this.myTitle = "Awesome Title"
+  }
+
+  @HostListener('mouseenter') mouseenter(eventData:Event) {
+   this.myTitle = "Awesome Ugly Title"
+  }
+
+~ [<d>.directive.ts] | HostBinding and HostListener for Class
+> @HostBinding('class.myClass') myClass
+  
+  @HostListener('click') myClick(){
+  	this.myClass = true
+  }
+
+~ HostBinding and HostListener with Custom Property Binding
+>> [<d>.directive.ts]
+  @Input() anotherColor 
+
+  @HostListener('click') myClick(){
+  	this.bgColor = this.anotherColor
+  }
+
+>> [<c>.component.html]
+   > <p appCustomDirective [anotherColor] = "'lightblue'">Lorem ipsum.</p>

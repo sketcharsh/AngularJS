@@ -1,0 +1,71 @@
+<p>course works!</p>
+<!-- <div *ngIf="arrayCourse.length>0; then course else noCourse">
+  
+</div>
+<ng-template #course>
+    Hello
+</ng-template>
+<ng-template #noCourse>
+    Bye
+</ng-template> -->
+<div [hidden]= "arrayCourse.length>0">
+    No course    
+</div>
+<div [hidden] = "arrayCourse.length==0">
+    Courses    
+</div>
+<button (click)="onclick()">
+    Click
+</button>
+<p *ngIf="btnClick==true else noSts" >
+    {{btnClick}}
+</p>
+<ng-template #noSts>
+        <p>{{btnClick}}</p>
+</ng-template>
+<p [ngStyle] = "{background : '#fff320' , 'font-size' : '50px'}">
+Black
+</p>
+<p [ngStyle] = "{ background : returnColor()}">
+    {{btnClick}}
+</p>
+<p [ngClass] = "{class1 : btnClick}">
+    Hello RED
+</p>
+<p [ngClass] = "['class1' , 'class2']">
+    Hello Array
+</p>
+<!-- <ul>
+    <li *ngFor = "let c of courses; index as i">
+        
+     {{c}} - {{i}}
+</li>
+</ul> -->
+<ul>
+    <li *ngFor = "let c of courses; index as i"
+    [ngStyle] = "{background : i%2==0 ? 'yellow' : 'red'}"
+    [ngClass] = "{class1 : i>=4}">
+    {{c}}
+</li>
+</ul>
+<div [ngSwitch] = "colorName">
+    <div *ngSwitchCase="'Blue'">Blue</div>
+    <div *ngSwitchCase="'Red'">Red</div>
+    <div *ngSwitchCase="'Green'">Green</div>
+    <div *ngSwitchDefault>Nahi hai</div>
+</div>
+Countries: <select (change)="choice($event.target.value)">
+    <option>Select Coutry</option>
+    <option *ngFor = "let c of countries" [value] = "c.code">{{c.country}}</option>
+</select>
+<div [ngSwitch] = "selectedC">
+    <div *ngSwitchCase="'ind'">
+        <h1>India</h1>
+    </div>
+    <div *ngSwitchCase="'Aus'">
+            <h1>AUS</h1>
+    </div>
+    <div *ngSwitchCase="'UK'">
+            <h1>UK</h1>
+    </div>
+</div>

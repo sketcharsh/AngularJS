@@ -1,0 +1,64 @@
+#Adding Bootstrap to Angular project
+
+1. Create new Angular project
+> 
+
+2. Get the bootstrap .css file (Bootstrap 4)
+
+3. Navigate to assets folder in the angular project
+
+4. create new folder named css
+
+5. paste the bootstrap.css file into the newly created folder
+
+6. [angular.json] | Register css files with absolute path (Do the same for the 'test' key) 
+> "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/demoApp",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css",
+              "src/assets/css/bootstrap.min.css"
+            ],
+            "scripts": []
+          },
+
+7. Done!
+
+#Bootstrap Navigation bar with routing
+1. [app.module.ts] | Import RouterModule 
+> import { RouterModule } from '@angular/router';
+
+2. [app.module.ts] | Register paths in the imports
+> imports: [
+    BrowserModule,
+    AppRoutingModule,
+    RouterModule.forRoot([
+      //Do same for all components
+      {
+        path: 'Home',
+        component: HomeComponent
+      }
+    ])
+  ],
+
+3. [app.component.html] | Add router-outlet tag at the end
+> <router-outlet></router-outlet>
+
+4. [app.component.html] | Use registered path name for href tag to enable navigation
+> <a class="nav-link" href="Course">Course</a>
+
+(OR)4 [app.component.html] | Use registered path name for href tag to enable faster navigation
+> <a [routerLink]="[ '/Course']" class="nav-link">Course</a>
+
+
+
+

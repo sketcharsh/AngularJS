@@ -1,0 +1,31 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align: center">
+<!-- <app-course></app-course> -->
+<!-- <tasks></tasks> -->
+<app-child *ngFor="let i of childArray"
+[demo] = "i">
+</app-child>
+<app-comp1 (notify) = "onNotifyClicked($event)"></app-comp1>
+<div>
+    <h2>
+        {{ShowMsg}}
+    </h2>
+</div>
+<!-- <form #userform = "ngForm">
+    {{userform.value | json}} <br>
+    {{userModule | json }}
+    <h1>Enrollment Form</h1>
+    Name : <input type="text" name="name" [(ngModel)] = "userModule.name"><br>
+    Email : <input type="text" name="email" [(ngModel)] = "userModule.email"><br>
+    Phone : <input type="text" name="phone" [(ngModel)] = "userModule.phone"><br>
+    Female: <input type="radio" name="gender" value="Female" [(ngModel)] = "userModule.gender">
+    Male: <input type="radio" name="gender" value="Male" [(ngModel)] = "userModule.gender"><br>
+    Courses: <select name="courses" [(ngModel)] = "userModule.course">  
+        <option>MSCIT</option>
+        <option>BCA</option>
+        <option>BCOM</option>
+    </select><br>
+    I agree <input type = "checkbox" name="agree" [(ngModel)] = "userModule.agree"><br>
+    <input type="submit" value="submit">
+</form>
+</div> -->

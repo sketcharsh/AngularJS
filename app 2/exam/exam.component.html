@@ -1,0 +1,105 @@
+<h1>1.</h1>
+
+<div [hidden]="course.length>0">
+   <h3>No Course</h3>
+</div>
+
+<div [hidden]="course.length<=0">
+    <h3>List of course</h3>
+</div>
+
+<h1>2.</h1>
+
+<button (click)="onClickChange()">Status</button>
+<h3 *ngIf="courseStatus; else noCourse">
+    Course Status:{{courseStatus}}
+</h3>
+
+<ng-template #noCourse>
+    <h3>Course Status:{{courseStatus}}</h3>
+</ng-template>
+
+<h1>3.</h1>
+
+<div>
+    <p [ngStyle] = "{'background' : 'cyan' , 'font-size' : '30px'}">
+        Course Msc(IT)
+    </p>
+</div>
+
+<h1>4.</h1>
+
+<div>
+    <p [ngStyle]="{'background' : courseStatus ? 'lightgray' : 'pink'}">
+        Course Status:{{courseStatus}}
+    </p>
+</div>
+
+<h1>5.(Through .ts file)</h1>
+
+<div>
+    <p [ngStyle]="{'background': clrChange()}">
+        Course Status:{{courseStatus}}
+    </p>
+</div>
+
+<h1>6.</h1>
+
+<div>
+    <p [ngClass]="['class1','class2']">
+        Demo For ngClass
+    </p>
+</div>
+
+<h1>7.</h1>
+
+<div *ngFor="let list of courseList; index as i">
+    {{i}}-{{list}}
+</div>
+
+<h1>8.</h1>
+
+<div *ngFor="let l of courseList; index as i">
+    <div [ngStyle]="{'background': i%2==0 ? 'blue' : 'red'}">
+        {{l}}
+    </div>
+</div>
+
+<h1>9.</h1>
+
+<div [ngSwitch]="switchClr">
+    <p *ngSwitchCase="'blue'">
+        picked Blue
+    </p>
+    <p *ngSwitchCase="'yellow'">
+        picked Yellow
+    </p>
+    <p *ngSwitchDefault>
+        Error
+    </p>
+</div>
+
+<h1>10.</h1>
+
+Select Country:<select (change)="choice($event.target.value)">
+    <option>Select</option>
+    <option *ngFor="let c of countries" [value]="c.code">{{c.name}}</option>
+</select> 
+
+<div [ngSwitch]="currentCountry">
+    <div *ngSwitchCase="'ind'">
+        <h2>India Calling Code is +91</h2>
+    </div>
+    <div *ngSwitchCase="'us'">
+        <h2>US Calling Code is +55</h2>
+    </div>
+    <div *ngSwitchCase="'uk'">
+        <h2>UK Calling Code is +333</h2>
+    </div>
+    <div *ngSwitchCase="'ame'">
+        <h2>America Calling Code is +65</h2>
+    </div>
+    <div *ngSwitchDefault>
+        <h2>Nothing selected</h2>
+    </div>
+</div> 

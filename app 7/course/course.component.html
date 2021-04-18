@@ -1,0 +1,46 @@
+<body>
+    <div> 
+        <div *ngIf="odd==true; else even">
+            <table border="1" align="center">
+                <tr [ngStyle]="{'background': 'skyblue'}">
+                    <th>Roll No</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Mail</th>
+                </tr>
+                <tbody *ngFor="let d of dataStud; index as i"
+                        [ngStyle]="{'background': 'pink'}">
+                    <tr *ngIf="i%2==0">
+                        <td>{{d.Roll}}</td>
+                        <td>{{d.Name}}</td>
+                        <td>{{d.Phone}}</td>
+                        <td>{{d.Mail}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>  
+        <ng-template #even>
+                <table border="1" align="center">
+                        <tr [ngStyle]="{'background': 'pink'}">
+                            <th>Roll No</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Mail</th>
+                        </tr>
+                        <tbody *ngFor="let d of dataStud; index as i"
+                                [ngStyle]="{'background': 'skyblue'}">
+                            <tr *ngIf="i%2==1">
+                                <td>{{d.Roll}}</td>
+                                <td>{{d.Name}}</td>
+                                <td>{{d.Phone}}</td>
+                                <td>{{d.Mail}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+        </ng-template>
+        <button (click)="oddClick()">
+            <div *ngIf="odd==true">Odd</div>
+            <div *ngIf="odd==false">Even</div>
+        </button> 
+    </div>
+</body>
